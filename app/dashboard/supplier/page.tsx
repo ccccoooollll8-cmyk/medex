@@ -1,20 +1,26 @@
 "use client"
 
-import { AlertTriangle, CheckCircle2, DollarSign, Package, Truck, TrendingUp } from "lucide-react"
+import { AlertTriangle, CheckCircle2, DollarSign, Package, Truck } from "lucide-react"
 import { KPICard } from "@/components/dashboard/kpi-card"
 import { ActivityFeed } from "@/components/dashboard/activity-feed"
 import { RiskAlertsWidget } from "@/components/dashboard/risk-alerts"
 import { InventoryChart } from "@/components/dashboard/inventory-chart"
 import { ShipmentTracker } from "@/components/dashboard/shipment-tracker"
-import { KPI_BY_ROLE, MOCK_PRODUCTS } from "@/lib/mock-data"
 import { formatCurrency, formatNumber } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
+import { useProductStore, useShipmentStore } from "@/lib/store"
 
 export default function SupplierDashboard() {
-  const kpi = KPI_BY_ROLE.supplier
-  const lowStockProducts = MOCK_PRODUCTS.filter((p) => p.status === "low_stock")
+  const { products } = useProductStore()
+  const { shipments } = useShipmentStore()
+
+  const activeShipments = shipments.filter(
+    (s) => s.fromRole === "supplier" && !["accepted", "rejected"].includes(s.status)
+  )
+  const lowStockProducts = products.filter((p) => p.status === "low_stock")
+  const inventoryValue = products.reduce((sum, p) => sum + p.price * p.quantity, 0)
 
   return (
     <div className="space-y-6 animate-fade-in">
@@ -27,7 +33,7 @@ export default function SupplierDashboard() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <KPICard
           title="Total Products"
-          value={formatNumber(kpi.totalProducts)}
+          value={formatNumber(products.length)}
           icon={Package}
           iconColor="text-blue-500"
           iconBg="bg-blue-50 dark:bg-blue-950/30"
@@ -36,7 +42,7 @@ export default function SupplierDashboard() {
         />
         <KPICard
           title="Active Shipments"
-          value={kpi.activeShipments}
+          value={activeShipments.length}
           icon={Truck}
           iconColor="text-indigo-500"
           iconBg="bg-indigo-50 dark:bg-indigo-950/30"
@@ -44,7 +50,7 @@ export default function SupplierDashboard() {
         />
         <KPICard
           title="Low Stock Alerts"
-          value={kpi.lowStockAlerts}
+          value={lowStockProducts.length}
           icon={AlertTriangle}
           iconColor="text-amber-500"
           iconBg="bg-amber-50 dark:bg-amber-950/30"
@@ -52,7 +58,7 @@ export default function SupplierDashboard() {
         />
         <KPICard
           title="Inventory Value"
-          value={formatCurrency(kpi.inventoryValue)}
+          value={formatCurrency(inventoryValue)}
           icon={DollarSign}
           iconColor="text-green-500"
           iconBg="bg-green-50 dark:bg-green-950/30"

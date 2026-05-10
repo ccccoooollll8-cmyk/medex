@@ -8,14 +8,26 @@ import { InventoryChart } from "@/components/dashboard/inventory-chart"
 import { ShipmentPerformanceChart } from "@/components/dashboard/shipment-chart"
 import { CategoryPieChart } from "@/components/dashboard/category-chart"
 import { ShipmentTracker } from "@/components/dashboard/shipment-tracker"
-import { KPI_BY_ROLE, DEMO_USERS, MOCK_PRODUCTS, MOCK_SHIPMENTS } from "@/lib/mock-data"
+import { DEMO_USERS, KPI_BY_ROLE } from "@/lib/mock-data"
 import { formatCurrency, formatNumber, getRoleColor, cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
+import { useProductStore, useShipmentStore } from "@/lib/store"
 
 export default function AdminDashboard() {
   const kpi = KPI_BY_ROLE.admin
+  const { products } = useProductStore()
+  const { shipments } = useShipmentStore()
+
+  const activeShipments = shipments.filter((s) => !["accepted", "rejected"].includes(s.status))
+  const verifiedTransactions = shipments.filter((s) => s.verified).length
+  const lowStockAlerts = products.filter((p) => p.status === "low_stock").length
+  const inventoryValue = products.reduce((sum, p) => sum + p.price * p.quantity, 0)
+  const now = new Date()
+  const shipmentsThisMonth = shipments.filter((s) => {
+    const d = new Date(s.createdAt)
+    return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth()
+  }).length
 
   return (
     <div className="space-y-6 animate-fade-in">
@@ -28,7 +40,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <KPICard
           title="Total Products"
-          value={formatNumber(kpi.totalProducts)}
+          value={formatNumber(products.length)}
           icon={Package}
           iconColor="text-blue-500"
           iconBg="bg-blue-50 dark:bg-blue-950/30"
@@ -36,7 +48,7 @@ export default function AdminDashboard() {
         />
         <KPICard
           title="Active Shipments"
-          value={kpi.activeShipments}
+          value={activeShipments.length}
           icon={Truck}
           iconColor="text-indigo-500"
           iconBg="bg-indigo-50 dark:bg-indigo-950/30"
@@ -44,7 +56,7 @@ export default function AdminDashboard() {
         />
         <KPICard
           title="Verified Transactions"
-          value={formatNumber(kpi.verifiedTransactions)}
+          value={formatNumber(verifiedTransactions)}
           icon={Shield}
           iconColor="text-green-500"
           iconBg="bg-green-50 dark:bg-green-950/30"
@@ -52,7 +64,7 @@ export default function AdminDashboard() {
         />
         <KPICard
           title="Total Inventory Value"
-          value={formatCurrency(kpi.inventoryValue)}
+          value={formatCurrency(inventoryValue)}
           icon={DollarSign}
           iconColor="text-emerald-500"
           iconBg="bg-emerald-50 dark:bg-emerald-950/30"
@@ -78,7 +90,7 @@ export default function AdminDashboard() {
         />
         <KPICard
           title="Low Stock Alerts"
-          value={kpi.lowStockAlerts}
+          value={lowStockAlerts}
           icon={AlertTriangle}
           iconColor="text-amber-500"
           iconBg="bg-amber-50 dark:bg-amber-950/30"
@@ -86,7 +98,7 @@ export default function AdminDashboard() {
         />
         <KPICard
           title="Shipments This Month"
-          value={kpi.shipmentsThisMonth}
+          value={shipmentsThisMonth}
           icon={Activity}
           iconColor="text-rose-500"
           iconBg="bg-rose-50 dark:bg-rose-950/30"

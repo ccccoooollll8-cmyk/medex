@@ -5,14 +5,12 @@ import { KPICard } from "@/components/dashboard/kpi-card"
 import { ActivityFeed } from "@/components/dashboard/activity-feed"
 import { RiskAlertsWidget } from "@/components/dashboard/risk-alerts"
 import { CategoryPieChart } from "@/components/dashboard/category-chart"
-import { KPI_BY_ROLE } from "@/lib/mock-data"
 import { formatNumber, formatDate, getStatusColor, cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useShipmentStore, useInventoryStore, useAuthStore } from "@/lib/store"
 
 export default function ProviderDashboard() {
-  const kpi = KPI_BY_ROLE.provider
   const { user } = useAuthStore()
   const { shipments } = useShipmentStore()
   const { inventory } = useInventoryStore()
@@ -22,6 +20,7 @@ export default function ProviderDashboard() {
     (s) => s.toRole === "provider" && (s.status === "in_transit" || s.status === "dispatched")
   )
   const verifiedCount = shipments.filter((s) => s.toRole === "provider" && s.verified).length
+  const lowStockAlerts = receivedInventory.filter((item) => item.quantity < 10).length
 
   return (
     <div className="space-y-6 animate-fade-in">
@@ -58,7 +57,7 @@ export default function ProviderDashboard() {
         />
         <KPICard
           title="Low Stock Alerts"
-          value={kpi.lowStockAlerts}
+          value={lowStockAlerts}
           icon={AlertTriangle}
           iconColor="text-amber-500"
           iconBg="bg-amber-50 dark:bg-amber-950/30"
