@@ -460,7 +460,7 @@ export default function LandingPage() {
                 {step.connector && (
                   <div className="hidden md:block absolute top-10 left-[calc(100%-12px)] w-6 h-0.5 bg-gradient-to-r from-white/20 to-white/5 z-10" />
                 )}
-                <div className="rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm p-6 text-center hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300 hover:-translate-y-1">
+                <div className="rounded-2xl border border-white/20 bg-slate-800/70 backdrop-blur-md p-6 text-center hover:border-white/35 hover:bg-slate-800/90 transition-all duration-300 hover:-translate-y-1">
                   <div className={cn("mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-xl", step.gradient, step.glow)}>
                     <step.icon className="h-7 w-7" />
                   </div>
