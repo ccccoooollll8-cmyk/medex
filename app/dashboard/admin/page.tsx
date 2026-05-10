@@ -33,7 +33,7 @@ export default function AdminDashboard() {
     <div className="space-y-6 animate-fade-in">
       <div>
         <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-        <p className="text-muted-foreground text-sm mt-1">MedX Platform · Full system overview and control</p>
+        <p className="text-muted-foreground text-sm mt-1">MedChain Platform · Full system overview and control</p>
       </div>
 
       {/* KPI Grid */}

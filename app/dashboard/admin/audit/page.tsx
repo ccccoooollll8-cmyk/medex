@@ -56,7 +56,7 @@ export default function AuditPage() {
         Details: l.details,
         IP: l.ipAddress,
       })),
-      "medx-audit-log"
+      "medchain-audit-log"
     )
     toast.success("Audit log exported")
   }

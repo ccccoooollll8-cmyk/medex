@@ -11,7 +11,7 @@ import type {
 export const DEMO_USERS: User[] = [
   {
     id: "user-001",
-    email: "supplier@medx.demo",
+    email: "supplier@medchain.demo",
     name: "Sarah Chen",
     role: "supplier",
     company: "PharmaCorp International",
@@ -20,7 +20,7 @@ export const DEMO_USERS: User[] = [
   },
   {
     id: "user-002",
-    email: "distributor@medx.demo",
+    email: "distributor@medchain.demo",
     name: "Michael Torres",
     role: "distributor",
     company: "MedDistribute Inc.",
@@ -29,7 +29,7 @@ export const DEMO_USERS: User[] = [
   },
   {
     id: "user-003",
-    email: "provider@medx.demo",
+    email: "provider@medchain.demo",
     name: "Dr. Emily Watson",
     role: "provider",
     company: "City General Hospital",
@@ -38,10 +38,10 @@ export const DEMO_USERS: User[] = [
   },
   {
     id: "user-004",
-    email: "admin@medx.demo",
+    email: "admin@medchain.demo",
     name: "James Patel",
     role: "admin",
-    company: "MedX Platform",
+    company: "MedChain Platform",
     avatar: "JP",
     createdAt: "2024-01-01T00:00:00Z",
   },

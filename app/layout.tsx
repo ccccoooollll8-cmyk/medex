@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MedX — Healthcare Supply Chain Platform",
+  title: "MedChain — Healthcare Supply Chain Platform",
   description:
     "End-to-end healthcare supply chain traceability and management platform. Track, verify, and optimize your medical supply chain.",
   keywords: ["healthcare", "supply chain", "medical", "traceability", "inventory"],

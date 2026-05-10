@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils"
 const DEMO_ACCOUNTS = [
   {
     role: "supplier" as const,
-    email: "supplier@medx.demo",
+    email: "supplier@medchain.demo",
     name: "Sarah Chen",
     company: "PharmaCorp International",
     color: "bg-blue-500",
@@ -24,7 +24,7 @@ const DEMO_ACCOUNTS = [
   },
   {
     role: "distributor" as const,
-    email: "distributor@medx.demo",
+    email: "distributor@medchain.demo",
     name: "Michael Torres",
     company: "MedDistribute Inc.",
     color: "bg-purple-500",
@@ -33,7 +33,7 @@ const DEMO_ACCOUNTS = [
   },
   {
     role: "provider" as const,
-    email: "provider@medx.demo",
+    email: "provider@medchain.demo",
     name: "Dr. Emily Watson",
     company: "City General Hospital",
     color: "bg-green-500",
@@ -42,9 +42,9 @@ const DEMO_ACCOUNTS = [
   },
   {
     role: "admin" as const,
-    email: "admin@medx.demo",
+    email: "admin@medchain.demo",
     name: "James Patel",
-    company: "MedX Platform",
+    company: "MedChain Platform",
     color: "bg-orange-500",
     bgColor: "bg-orange-50 dark:bg-orange-950/30 hover:bg-orange-100 dark:hover:bg-orange-950/50",
     borderColor: "border-orange-200 dark:border-orange-800",
@@ -105,7 +105,7 @@ export default function LoginPage() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
               <Activity className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-bold">MedX</span>
+            <span className="text-xl font-bold">MedChain</span>
           </div>
 
           <h1 className="text-2xl font-bold mb-1">Welcome back</h1>

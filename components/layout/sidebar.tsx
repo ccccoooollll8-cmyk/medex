@@ -55,11 +55,41 @@ const NAV_BY_ROLE: Record<UserRole, { href: string; label: string; icon: React.E
   ],
 }
 
-const ROLE_COLORS: Record<UserRole, string> = {
-  supplier: "bg-blue-500",
-  distributor: "bg-purple-500",
-  provider: "bg-green-500",
-  admin: "bg-orange-500",
+const ROLE_THEME: Record<UserRole, {
+  iconBg: string
+  activeBg: string
+  headerBg: string
+  avatarBg: string
+  label: string
+}> = {
+  supplier: {
+    iconBg: "bg-blue-600",
+    activeBg: "bg-blue-600 text-white",
+    headerBg: "bg-blue-50 dark:bg-blue-950/30",
+    avatarBg: "bg-blue-500",
+    label: "Supplier",
+  },
+  distributor: {
+    iconBg: "bg-purple-600",
+    activeBg: "bg-purple-600 text-white",
+    headerBg: "bg-purple-50 dark:bg-purple-950/30",
+    avatarBg: "bg-purple-500",
+    label: "Distributor",
+  },
+  provider: {
+    iconBg: "bg-green-600",
+    activeBg: "bg-green-600 text-white",
+    headerBg: "bg-green-50 dark:bg-green-950/30",
+    avatarBg: "bg-green-500",
+    label: "Provider",
+  },
+  admin: {
+    iconBg: "bg-orange-600",
+    activeBg: "bg-orange-600 text-white",
+    headerBg: "bg-orange-50 dark:bg-orange-950/30",
+    avatarBg: "bg-orange-500",
+    label: "Admin",
+  },
 }
 
 export function Sidebar() {
@@ -71,6 +101,7 @@ export function Sidebar() {
   if (!user) return null
 
   const navItems = NAV_BY_ROLE[user.role]
+  const theme = ROLE_THEME[user.role]
 
   const handleLogout = () => {
     logout()
@@ -85,12 +116,21 @@ export function Sidebar() {
         sidebarOpen ? "w-60" : "w-16"
       )}
     >
-      {/* Logo */}
-      <div className={cn("flex h-16 items-center border-b px-4", sidebarOpen ? "gap-2.5" : "justify-center")}>
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary">
+      {/* Logo / Role header */}
+      <div className={cn(
+        "flex h-16 items-center border-b px-4",
+        sidebarOpen ? "gap-3" : "justify-center",
+        theme.headerBg
+      )}>
+        <div className={cn("flex h-8 w-8 shrink-0 items-center justify-center rounded-lg", theme.iconBg)}>
           <Activity className="h-5 w-5 text-white" />
         </div>
-        {sidebarOpen && <span className="font-bold text-lg">MedX</span>}
+        {sidebarOpen && (
+          <div className="min-w-0">
+            <p className="font-bold text-sm leading-tight">{theme.label}</p>
+            <p className="text-[10px] text-muted-foreground">MedChain Platform</p>
+          </div>
+        )}
       </div>
 
       {/* Toggle button */}
@@ -112,7 +152,7 @@ export function Sidebar() {
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150",
                 active
-                  ? "bg-primary text-primary-foreground"
+                  ? theme.activeBg
                   : "text-muted-foreground hover:bg-muted hover:text-foreground",
                 !sidebarOpen && "justify-center px-2"
               )}
@@ -153,7 +193,7 @@ export function Sidebar() {
         {sidebarOpen && (
           <div className="mt-3 flex items-center gap-3 rounded-lg bg-muted/50 p-3">
             <Avatar className="h-8 w-8">
-              <AvatarFallback className={cn("text-white text-xs font-bold", ROLE_COLORS[user.role])}>
+              <AvatarFallback className={cn("text-white text-xs font-bold", theme.avatarBg)}>
                 {user.avatar || user.name.slice(0, 2).toUpperCase()}
               </AvatarFallback>
             </Avatar>

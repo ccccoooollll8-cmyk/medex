@@ -86,7 +86,7 @@ const FEATURES = [
 
 const TESTIMONIALS = [
   {
-    quote: "MedX gave us end-to-end visibility across our entire supply chain. We caught three near-expiry batches before they became a problem.",
+    quote: "MedChain gave us end-to-end visibility across our entire supply chain. We caught three near-expiry batches before they became a problem.",
     name: "Dr. Priya Nair",
     title: "Chief Pharmacy Officer, Apollo Health",
     initials: "PN",
@@ -148,7 +148,7 @@ export default function LandingPage() {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
                 <Activity className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold tracking-tight">MedX</span>
+              <span className="text-xl font-bold tracking-tight">MedChain</span>
               <Badge variant="secondary" className="ml-1 text-xs">v0.9 Beta</Badge>
             </div>
             <div className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
@@ -187,7 +187,7 @@ export default function LandingPage() {
             <span className="block">Redefined.</span>
           </h1>
           <p className="mx-auto max-w-2xl text-lg sm:text-xl text-muted-foreground mb-10 leading-relaxed">
-            MedX gives healthcare organizations end-to-end visibility across the medical supply chain.
+            MedChain gives healthcare organizations end-to-end visibility across the medical supply chain.
             Track products from manufacturer to patient with blockchain-verified audit trails.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -214,7 +214,7 @@ export default function LandingPage() {
               <div className="h-3 w-3 rounded-full bg-red-400" />
               <div className="h-3 w-3 rounded-full bg-amber-400" />
               <div className="h-3 w-3 rounded-full bg-green-400" />
-              <span className="ml-3 text-xs text-muted-foreground font-mono">medx.health/dashboard</span>
+              <span className="ml-3 text-xs text-muted-foreground font-mono">medchain.health/dashboard</span>
             </div>
             <div className="bg-muted/20 p-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
@@ -284,7 +284,7 @@ export default function LandingPage() {
             <Badge variant="outline" className="mb-4">Platform Features</Badge>
             <h2 className="text-4xl font-bold mb-4">Everything your supply chain needs</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Built specifically for healthcare, MedX covers every stage of the medical supply chain
+              Built specifically for healthcare, MedChain covers every stage of the medical supply chain
               with purpose-built tools for each stakeholder.
             </p>
           </div>
@@ -376,7 +376,7 @@ export default function LandingPage() {
               <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
             </div>
             <Badge variant="outline" className="mb-6">Try It Now — No Sign Up Required</Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Experience MedX with demo access</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Experience MedChain with demo access</h2>
             <p className="text-muted-foreground mb-10 max-w-xl mx-auto">
               Log in as any role to explore the full platform. All data is simulated — no registration needed.
             </p>
@@ -402,7 +402,7 @@ export default function LandingPage() {
               <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary">
                 <Activity className="h-4 w-4 text-white" />
               </div>
-              <span className="font-bold">MedX</span>
+              <span className="font-bold">MedChain</span>
               <span className="text-muted-foreground text-sm">Healthcare Supply Chain Platform</span>
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -410,7 +410,7 @@ export default function LandingPage() {
               <span className="flex items-center gap-1.5"><Globe className="h-3.5 w-3.5" /> SOC 2 Type II</span>
               <span className="flex items-center gap-1.5"><Shield className="h-3.5 w-3.5" /> ISO 13485</span>
             </div>
-            <p className="text-xs text-muted-foreground">© 2025 MedX Inc. All rights reserved.</p>
+            <p className="text-xs text-muted-foreground">© 2025 MedChain Inc. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -33,7 +33,7 @@ const kpi = KPI_BY_ROLE.admin
 
 export default function AnalyticsPage() {
   const handleExport = () => {
-    downloadCSV(EFFICIENCY_DATA, "medx-analytics")
+    downloadCSV(EFFICIENCY_DATA, "medchain-analytics")
     toast.success("Analytics report exported")
   }
 
