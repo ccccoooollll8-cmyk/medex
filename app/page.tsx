@@ -7,7 +7,6 @@ import {
   ArrowRight,
   BarChart3,
   CheckCircle2,
-  ChevronRight,
   Globe,
   Lock,
   Package,
@@ -324,11 +323,6 @@ export default function LandingPage() {
               { step: "04", title: "Admin Audits", desc: "Full audit trail visible to admins. Exportable compliance reports at any time.", icon: Shield, color: "bg-purple-500" },
             ].map((step, idx) => (
               <div key={step.step} className="relative">
-                {idx < 3 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-px bg-border z-10 -translate-x-4">
-                    <ChevronRight className="absolute -right-2 -top-2 h-4 w-4 text-muted-foreground" />
-                  </div>
-                )}
                 <div className="rounded-xl border bg-card p-6 text-center">
                   <div className={cn("mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full text-white", step.color)}>
                     <step.icon className="h-6 w-6" />
